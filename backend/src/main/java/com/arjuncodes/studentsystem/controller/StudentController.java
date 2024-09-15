@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/student")
 public class StudentController {
     @Autowired
@@ -15,6 +16,12 @@ public class StudentController {
 
     @PostMapping("/add")
     public String add(@RequestBody Student student) {
+        studentService.saveStudent(student);
+        return "New student is added";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody Student student) {
         studentService.saveStudent(student);
         return "New student is added";
     }
